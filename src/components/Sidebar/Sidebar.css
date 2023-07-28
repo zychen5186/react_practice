@@ -1,0 +1,46 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #f1f1f1;
+  transition: width 0.3s ease-in-out;
+}
+
+.sidebar.expanded {
+  width: 200px;
+}
+
+.sidebar.minimized{
+  width: 10px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+button {
+  display: block;
+  margin-top: 10px;
+}
+
+.main-content {
+  /* Add necessary styling for the main content */
+  margin-left: 200px; /* Adjust this value to provide space for the expanded sidebar */
+}
+
+.minimized .main-content {
+  margin-left: 50px; /* Adjust this value to provide space for the minimized sidebar */
+}

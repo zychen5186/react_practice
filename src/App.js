@@ -1,12 +1,18 @@
 import './App.css';
 import React, { useState } from 'react';
 import Axios from 'axios';
+import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   const [name, setName] = useState("")
   const [role, setRole] = useState("")
   const [text, setText] = useState("")
+  const [isExpanded, setIsExpanded] = useState(true);
 
+
+  const mainContentStyle = {
+    marginleft: isExpanded ? '200px' : '50px'
+  }
 
   const handleSubmit = (e) => {
       e.preventDefault();
@@ -20,44 +26,52 @@ function App() {
   const handleClick = () => {
     Axios.get('http://localhost:4000/getText')
     .then((response) => {
-      setText(response.data[0].name)
+      setText(response.data[response.data.length].name)
     })
   }
 
+  const updateExpandedStatee = (isExpanded) => {
+    setIsExpanded(isExpanded);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header"> 
-        <div className="logIn-form">
-            <form onSubmit={handleSubmit}>
-                <p>First Name</p>
+    
+    <div className="App" >
+      <header className="App-header" > 
+        <Sidebar updateExpandedState={updateExpandedStatee}/>
+        <div className='main-content' style={mainContentStyle}>
+          <div className="logIn-form">
+              <form onSubmit={handleSubmit}>
+                  <p>First Name</p>
 
-                <input
-                  className = "Name" 
-                  type="text"
-                  placeholder="First name ..."
-                  onChange={(e) => {setName(e.target.value)}}
-                />
+                  <input
+                    className = "Name" 
+                    type="text"
+                    placeholder="First name ..."
+                    onChange={(e) => {setName(e.target.value)}}
+                    />
 
-                <p> Company Role</p>
+                  <p> Company Role</p>
 
-                <input 
-                  className = "Role"
-                  type="text"
-                  placeholder = "Role...." 
-                  onChange={(e) => {setRole(e.target.value)}}
-                />
+                  <input 
+                    className = "Role"
+                    type="text"
+                    placeholder = "Role...." 
+                    onChange={(e) => {setRole(e.target.value)}}
+                    />
 
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-        <div>
-          <input 
-            type="text" 
-            id="myTextbox" 
-            value={text}/>
-          <button
-           onClick={handleClick}
-           id="myButton">Update Text</button>
+                  <button type="submit">Submit</button>
+              </form>
+          </div>
+          <div>
+            <input 
+              type="text" 
+              id="myTextbox" 
+              value={text}/>
+            <button
+            onClick={handleClick}
+            id="myButton">Update Text</button>
+           </div>
         </div>
       </header>
     </div>
