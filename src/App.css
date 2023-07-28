@@ -1,38 +1,48 @@
-.App {
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #8EC1D6;
+}
+
+.logIn-form {
+  margin: 100px auto;
+  width: 200px;
+  height: 250px;
+  background-color: #fff;
+  border-radius: 10px; 
+}
+
+.logIn-form p {
   text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #B8BFC6;
+  padding: 10px 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logIn-form input {
+  display: block;
+  width: 80%;
+  height: 40px;
+  margin: 10px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 16px;
+  color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logIn-form button {
+  background-color: #8EC1D6;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius:7px;
+  padding: 5px 10px;
+  border: none;
 }
