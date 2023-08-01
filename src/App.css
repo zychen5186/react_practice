@@ -7,7 +7,6 @@
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #8EC1D6;
-  margin-left: 200px;
 }
 
 .logIn-form {
@@ -47,3 +46,11 @@ body {
   padding: 5px 10px;
   border: none;
 }
+
+/* .main-content.expanded {
+  margin-left: 200px;
+}
+
+.main-content.minimized {
+  margin-left: 50px;
+} */

@@ -10,9 +10,7 @@ function App() {
   const [isExpanded, setIsExpanded] = useState(true);
 
 
-  const mainContentStyle = {
-    marginleft: isExpanded ? '200px' : '50px'
-  }
+  
 
   const handleSubmit = (e) => {
       e.preventDefault();
@@ -26,20 +24,24 @@ function App() {
   const handleClick = () => {
     Axios.get('http://localhost:4000/getText')
     .then((response) => {
-      setText(response.data[response.data.length].name)
+      setText(response.data[response.data.length-1].name)
     })
   }
+
+  const mainContentStyle = {
+    marginLeft: isExpanded ? '200px' : '50px',
+    marginTop: '20px'
+  };
 
   const updateExpandedStatee = (isExpanded) => {
     setIsExpanded(isExpanded);
   }
 
   return (
-    
     <div className="App" >
-      <header className="App-header" > 
-        <Sidebar updateExpandedState={updateExpandedStatee}/>
-        <div className='main-content' style={mainContentStyle}>
+      <header className="App-header" >
+        <div className="main-content" style={mainContentStyle} >
+          <Sidebar updateExpandedState={updateExpandedStatee}/>
           <div className="logIn-form">
               <form onSubmit={handleSubmit}>
                   <p>First Name</p>
@@ -63,7 +65,7 @@ function App() {
                   <button type="submit">Submit</button>
               </form>
           </div>
-          <div>
+          <div >
             <input 
               type="text" 
               id="myTextbox" 
@@ -73,6 +75,7 @@ function App() {
             id="myButton">Update Text</button>
            </div>
         </div>
+        
       </header>
     </div>
   );
